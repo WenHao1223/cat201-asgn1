@@ -10,19 +10,26 @@ public class MainSceneController {
 
     @FXML
     void btnOKClicked(ActionEvent event) {
-      Stage mainWindow = (Stage) tfTitle.getScene().getWindow();
-      String title = tfTitle.getText();
-      mainWindow.setTitle(title);
+        if (tfTitle != null) {
+            Stage mainWindow = (Stage) tfTitle.getScene().getWindow();
+            String title = tfTitle.getText();
+            mainWindow.setTitle(title);
+        } else {
+            System.err.println("tfTitle is null");
+        }
     }
 
     @FXML
     void tfTitle(ActionEvent event) {
-
+        if (tfTitle != null) {
+            System.out.println(tfTitle.getText());
+        } else {
+            System.err.println("tfTitle is null");
+        }
     }
 
     @FXML
     void initialize() {
-
+        // Initialization code if needed
     }
-
 }
