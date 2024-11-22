@@ -43,7 +43,7 @@ public class App extends Application {
                 default:
                     throw new IllegalArgumentException("Invalid page number: " + page);
             }
-
+            System.out.println("Loaded scene for page: " + page);
             Scene scene = new Scene(root);
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
