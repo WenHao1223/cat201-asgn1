@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.AppBar?>
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
@@ -10,26 +8,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-
-<AnchorPane maxHeight="420.0" maxWidth="720.0" minHeight="420.0" minWidth="720.0" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="420.0" maxWidth="720.0" minHeight="420.0" minWidth="720.0" prefHeight="420.0"
+   prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="controllers.HomePageSceneController" stylesheets="@../styles.css">
    <children>
-      <AppBar prefHeight="54.0" prefWidth="720.0" titleText="ABC Library" />
+      <VBox prefHeight="54.0" prefWidth="720.0" styleClass="header">
+         <children>
+            <Text text="ABC Library" styleClass="header-title" />
+         </children>
+      </VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="237.0" layoutY="64.0">
          <children>
             <ButtonBar buttonMinWidth="40.0">
-              <buttons>
-                  <TextField maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0" promptText="Search ..." />
-                <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false" text="Add">
+               <buttons>
+                  <TextField maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0"
+                     promptText="Search ..." styleClass="text-field" />
+                  <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
+                     text="Add" styleClass="button">
                      <graphic>
-                        <Icon content="SEARCH" />
+                        <ImageView fitWidth="20.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search-white.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
-              </buttons>
+               </buttons>
             </ButtonBar>
-            <Button mnemonicParsing="false" style="-fx-background-color: DarkOrange;" text="Add">
+            <Button mnemonicParsing="false"
+               text="Add" styleClass="orange">
                <graphic>
-                  <Icon content="ADD" />
+                  <ImageView fitWidth="20.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/add-white.png" />
+                     </image>
+                  </ImageView>
                </graphic>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -39,9 +57,12 @@
       </HBox>
       <AnchorPane layoutY="105.0" prefHeight="317.0" prefWidth="720.0">
          <children>
-            <ScrollPane layoutX="13.0" layoutY="11.0" prefHeight="294.0" prefWidth="694.0">
+            <ScrollPane layoutX="13.0" layoutY="11.0" prefHeight="294.0" prefWidth="694.0"
+               styleClass="scroll-pane">
                <content>
-                  <FlowPane hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWrapLength="690.0" vgap="30.0" />
+                  <FlowPane hgap="30.0" maxHeight="1.7976931348623157E308"
+                     maxWidth="1.7976931348623157E308" prefWrapLength="690.0" vgap="30.0"
+                     styleClass="flow-pane" />
                </content>
             </ScrollPane>
          </children>

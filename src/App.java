@@ -10,7 +10,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("views/SampleScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("views/HomePageScene.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Hello World!");
@@ -18,7 +18,7 @@ public class App extends Application {
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Failed to load MainScene.fxml");
+            System.err.println("Failed to load HomePageScene.fxml");
         }
     }
 
