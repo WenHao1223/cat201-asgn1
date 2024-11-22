@@ -9,11 +9,12 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        int page = 3;
+        int page = 4;
         /*
          * 1 - HomePageScene
          * 2 - AddBookScene
          * 3 - ViewBookScene
+         * 4 - BookCard
          */
         try {
             
@@ -27,6 +28,9 @@ public class App extends Application {
                     break;
                 case 3:
                     root = FXMLLoader.load(getClass().getResource("views/ViewBookScene.fxml"));
+                    break;
+                case 4:
+                    root = FXMLLoader.load(getClass().getResource("components/BookCard.fxml"));
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid page number: " + page);
@@ -47,6 +51,9 @@ public class App extends Application {
                     break;
                 case 3:
                     System.err.println("Failed to load ViewBookScene.fxml");
+                    break;
+                case 4:
+                    System.err.println("Failed to load BookCard.fxml");
                     break;
                 default:
                     System.err.println("Failed to load scene for page: " + page);
