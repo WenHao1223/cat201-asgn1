@@ -84,7 +84,7 @@
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons/cross.png" />
+                              <Image url="@../images/icons/close.png" />
                            </image>
                         </ImageView>
                      </graphic>
