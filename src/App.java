@@ -9,16 +9,45 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
+        int page = 2;
+        /*
+         * 1 - HomePageScene
+         * 2 - AddBookScene
+         */
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("views/AddBookScene.fxml"));
-            Scene scene = new Scene(root);
+            
+            Parent root;
+            switch (page) {
+                case 1:
+                    root = FXMLLoader.load(getClass().getResource("views/HomePageScene.fxml"));
+                    break;
+                case 2:
+                    root = FXMLLoader.load(getClass().getResource("views/AddBookScene.fxml"));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid page number: " + page);
+            }
 
+            Scene scene = new Scene(root);
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Failed to load AddBookScene.fxml");
+            switch (page) {
+                case 1:
+                    System.err.println("Failed to load HomePageScene.fxml");
+                    break;
+                case 2:
+                    System.err.println("Failed to load AddBookScene.fxml");
+                    break;
+                default:
+                    System.err.println("Failed to load scene for page: " + page);
+                    break;
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 

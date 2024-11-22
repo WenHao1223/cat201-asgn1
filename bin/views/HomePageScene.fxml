@@ -17,9 +17,9 @@
    prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
    fx:controller="controllers.HomePageSceneController" stylesheets="@../styles.css">
    <children>
-      <VBox prefHeight="54.0" prefWidth="720.0" styleClass="header">
+      <VBox prefHeight="54.0" prefWidth="720.0" styleClass="app-bar">
          <children>
-            <Text text="ABC Library" styleClass="header-title" />
+            <Text text="ABC Library" styleClass="app-title" />
          </children>
       </VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="237.0" layoutY="64.0">
