@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +10,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("views/MainScene.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Hello World!");
