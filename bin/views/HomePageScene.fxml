@@ -31,7 +31,7 @@
                   <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
                      text="Add" styleClass="button">
                      <graphic>
-                        <ImageView fitWidth="15.0" preserveRatio="true">
+                        <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
                               <Image url="@../images/search-white.png" />
                            </image>
@@ -43,7 +43,7 @@
             <Button mnemonicParsing="false"
                text="Add" styleClass="orange">
                <graphic>
-                  <ImageView fitWidth="15.0" preserveRatio="true">
+                  <ImageView fitWidth="20.0" preserveRatio="true">
                      <image>
                         <Image url="@../images/add-white.png" />
                      </image>
