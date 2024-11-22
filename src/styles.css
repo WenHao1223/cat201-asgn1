@@ -66,6 +66,19 @@ AnchorPane {
   -fx-background-color: #C1351D;
 }
 
+.button.black {
+  -fx-background-color: #000000;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 10;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+}
+
+.button.black:hover {
+  -fx-background-color: #333333;
+}
+
 .text-field {
   -fx-background-color: white;
   -fx-border-color: #4285F4;

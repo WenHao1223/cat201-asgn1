@@ -67,7 +67,7 @@
                            <graphic>
                               <ImageView fitWidth="20.0" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/file-upload-white.png" />
+                                    <Image url="@../images/icons/file-upload.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -84,7 +84,7 @@
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
-                              <Image url="@../images/cross-white.png" />
+                              <Image url="@../images/icons/cross.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -94,7 +94,7 @@
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
-                              <Image url="@../images/add-white.png" />
+                              <Image url="@../images/icons/add.png" />
                            </image>
                         </ImageView>
                      </graphic>

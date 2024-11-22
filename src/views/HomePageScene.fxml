@@ -33,7 +33,7 @@
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
-                              <Image url="@../images/search-white.png" />
+                              <Image url="@../images/icons/search.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -45,7 +45,7 @@
                <graphic>
                   <ImageView fitWidth="20.0" preserveRatio="true">
                      <image>
-                        <Image url="@../images/add-white.png" />
+                        <Image url="@../images/icons/add.png" />
                      </image>
                   </ImageView>
                </graphic>
