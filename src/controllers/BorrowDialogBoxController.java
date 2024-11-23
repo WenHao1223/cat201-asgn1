@@ -1,6 +1,19 @@
 package controllers;
 
 import models.Library;
+
+import java.io.IOException;
+import java.util.Optional;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import models.Book;
 
 public class BorrowDialogBoxController {
@@ -22,7 +35,49 @@ public class BorrowDialogBoxController {
     } else {
       System.err.println("Library is null in BorrowDialogBoxController");
     }
+  }
 
-    book.displayBookDetails();
+  public void handleCancelButtonAction(ActionEvent event) {
+    // Show a confirmation alert box
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Cancel Borrowing Book");
+    alert.setHeaderText(null);
+    alert.setContentText("Are you sure you want to cancel borrowing book?");
+    Optional<ButtonType> action = alert.showAndWait();
+
+    if (action.isPresent() && action.get() == ButtonType.OK) {
+      // User chose OK, proceed with redirection
+      try {
+        // close the dialog box
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      // User chose CANCEL or closed the dialog
+      return;
+    }
+  }
+
+  public void setCloseRequestHandler(Stage stage) {
+    stage.setOnCloseRequest(event -> {
+      // Consume the event to prevent the window from closing
+      event.consume();
+
+      // Show a confirmation alert box
+      Alert alert = new Alert(AlertType.CONFIRMATION);
+      alert.setTitle("Cancel Borrowing Book");
+      alert.setHeaderText(null);
+      alert.setContentText("Are you sure you want to cancel borrowing book?");
+      Optional<ButtonType> action = alert.showAndWait();
+
+      if (action.isPresent() && action.get() == ButtonType.OK) {
+        // User chose OK, proceed with redirection
+        stage.close();
+      } else {
+        // User chose CANCEL or closed the dialog
+        return;
+      }
+    });
   }
 }

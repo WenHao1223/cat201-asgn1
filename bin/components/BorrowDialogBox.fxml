@@ -54,7 +54,8 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" styleClass="red" text="Cancel">
+                  <Button mnemonicParsing="false" styleClass="red" text="Cancel"
+                     onAction="#handleCancelButtonAction">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
                            preserveRatio="true">

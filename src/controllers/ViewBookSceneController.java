@@ -110,10 +110,16 @@ public class ViewBookSceneController {
           dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
           dialogStage.setResizable(false);
           dialogStage.setScene(new Scene(root));
+
+          // Set the close request handler
+          borrowController.setCloseRequestHandler(dialogStage);
+          
           dialogStage.showAndWait();
         } catch (IOException e) {
           e.printStackTrace();
         }
+      } else {
+        return;
       }
     } else {
       System.out.println("Returning book...");
