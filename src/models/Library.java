@@ -66,7 +66,8 @@ public class Library extends Book implements LibraryInterface {
     System.out.println("-----------------");
     ArrayList<Book> foundBooks = new ArrayList<Book>();
     for (Book book : books) {
-      if (book.title.contains(searched) || book.author.contains(searched) || book.ISBN.contains(searched)) {
+      if (book.title.toLowerCase().contains(searched) || book.author.toLowerCase().contains(searched)
+          || book.ISBN.toLowerCase().contains(searched)) {
         foundBooks.add(book);
       }
     }

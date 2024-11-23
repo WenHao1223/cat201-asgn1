@@ -26,7 +26,7 @@ public class HomePageSceneController {
   private FlowPane bookFlowPane;
 
   @FXML
-  private TextField searchTextField;
+  private TextField tfSearch;
 
   private Library library;
 
@@ -62,7 +62,7 @@ public class HomePageSceneController {
 
   @FXML
   private void handleSearchBookButtonAction(ActionEvent event) {
-    String searchText = searchTextField.getText().trim();
+    String searchText = tfSearch.getText().trim().toLowerCase();
     if (searchText.isEmpty()) {
       loadBookCards(library.getBooks());
     } else {
@@ -73,7 +73,7 @@ public class HomePageSceneController {
 
   @FXML
   private void handleSearchCloseButtonAction(ActionEvent event) {
-    searchTextField.clear();
+    tfSearch.clear();
     loadBookCards(library.getBooks());
   }
 

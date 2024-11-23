@@ -26,10 +26,10 @@
          <children>
             <ButtonBar buttonMinWidth="40.0">
                <buttons>
-                  <TextField maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0"
+                  <TextField fx:id="tfSearch" maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0"
                      promptText="Search ..." styleClass="text-field" />
                   <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
-                     text="search" styleClass="button">
+                     text="search" styleClass="button" onAction="#handleSearchBookButtonAction">
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
