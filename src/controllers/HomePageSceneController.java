@@ -52,6 +52,7 @@ public class HomePageSceneController {
         Node bookCard = fxmlLoader.load();
         BookCardController controller = fxmlLoader.getController();
         controller.setBookDetails(book.getTitle(), book.getAuthor(), book.getISBN());
+        controller.setLibrary(library);
         bookFlowPane.getChildren().add(bookCard);
       }
     } catch (IOException e) {
@@ -90,7 +91,7 @@ public class HomePageSceneController {
         Parent root = fxmlLoader.load();
         AddBookSceneController addBookController = fxmlLoader.getController();
         addBookController.setLibrary(library);
-        
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

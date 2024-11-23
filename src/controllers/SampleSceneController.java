@@ -3,11 +3,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.Library;
 
 public class SampleSceneController {
-
     @FXML
     private TextField tfTitle;
+
+    private Library library;
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
 
     @FXML
     void btnOKClicked(ActionEvent event) {

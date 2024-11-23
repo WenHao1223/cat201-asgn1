@@ -114,4 +114,20 @@ public class Book implements BookInterface {
   public String getISBN() {
     return this.ISBN;
   }
+
+  public boolean getAvailability() {
+    return this.availability;
+  }
+
+  public String getBorrowerName() {
+    return this.borrowerName;
+  }
+
+  public String getBorrowerPhone() {
+    return this.borrowerPhone;
+  }
+
+  public long getBorrowerID() {
+    return this.borrowerID;
+  }
 }

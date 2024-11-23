@@ -12,6 +12,8 @@ import models.Library;
 
 import java.util.List;
 
+import javax.swing.text.View;
+
 import controllers.AddBookSceneController;
 import controllers.HomePageSceneController;
 import controllers.ViewBookSceneController;
@@ -69,14 +71,20 @@ public class App extends Application {
                 case 4:
                     fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
                     root = fxmlLoader.load();
+                    ViewBookSceneController bookController = fxmlLoader.getController();
+                    bookController.setLibrary(library);
                     break;
                 case 5:
                     fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowDialogBox.fxml"));
                     root = fxmlLoader.load();
+                    ViewBookSceneController borrowController = fxmlLoader.getController();
+                    borrowController.setLibrary(library);
                     break;
                 case 6:
                     fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowerDetailsBox.fxml"));
                     root = fxmlLoader.load();
+                    ViewBookSceneController borrowerController = fxmlLoader.getController();
+                    borrowerController.setLibrary(library);
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid page number: " + page);

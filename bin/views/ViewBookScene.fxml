@@ -59,7 +59,7 @@
                   </Separator>
                   <VBox prefHeight="250.0" prefWidth="472.0">
                      <children>
-                        <Label text="Alice in Wonderland">
+                        <Label fx:id="bookTitleLabel" text="Book Title">
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
@@ -80,15 +80,16 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="ISBN" GridPane.rowIndex="1" />
                               <Label text="Author" />
+                              <Label text="ISBN" GridPane.rowIndex="1" />
                               <Label text="Available?" GridPane.rowIndex="2" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yes"
-                                 GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="John Doe"
+
+                              <Label fx:id="authorNameLabel" text="Author Name"
                                  GridPane.columnIndex="1" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="971-1-xxx-xxxxx-x"
+                              <Label fx:id="isbnLabel" text="ISBN"
                                  GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="isAvailableLabel" text="Available"
+                                 GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                            <padding>
                               <Insets bottom="20.0" left="5.0" right="5.0" />

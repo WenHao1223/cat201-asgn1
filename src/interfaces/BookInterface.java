@@ -16,4 +16,12 @@ public interface BookInterface {
   public String getAuthor();
 
   public String getISBN();
+
+  public boolean getAvailability();
+
+  public String getBorrowerName();
+
+  public String getBorrowerPhone();
+
+  public long getBorrowerID();
 }

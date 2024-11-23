@@ -52,6 +52,15 @@ public class Library extends Book implements LibraryInterface {
     return books;
   }
 
+  public Book getBookByISBN(String ISBN) {
+    for (Book book : books) {
+      if (book.ISBN.equals(ISBN)) {
+        return book;
+      }
+    }
+    return null;
+  }
+
   public ArrayList<Book> searchBook(String searched) {
     System.out.println("Searching for books with '" + searched + "' in title, author, or ISBN...\n");
     System.out.println("-----------------");

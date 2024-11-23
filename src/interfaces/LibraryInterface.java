@@ -11,6 +11,10 @@ public interface LibraryInterface {
 
   public void viewBooks();
 
+  public ArrayList<Book> getBooks();
+
+  public Book getBookByISBN(String ISBN);
+
   public ArrayList<Book> searchBook(String searched);
 
   public int getNumberOfBooks();
