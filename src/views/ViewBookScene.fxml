@@ -41,13 +41,13 @@
             </Button>
             <HBox prefHeight="0.0" prefWidth="680.0">
                <children>
-                  <ImageView accessibleHelp="Book Cover Thumbnail"
+                  <ImageView fx:id="bookImageView" accessibleHelp="Book Cover Thumbnail"
                      accessibleText="Book Cover Thumbnail" fitHeight="270.0" fitWidth="180.0"
                      pickOnBounds="true"
                      preserveRatio="false">
-                     <image>
+                     <!-- <image>
                         <Image url="@../data/thumbnail/978-0060935467.jpg" />
-                     </image>
+                     </image> -->
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
