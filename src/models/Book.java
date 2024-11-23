@@ -1,5 +1,8 @@
 package models;
 
+import java.util.Arrays;
+import java.util.List;
+
 import interfaces.BookInterface;
 
 public class Book implements BookInterface {
@@ -86,4 +89,16 @@ public class Book implements BookInterface {
       System.out.println("Borrower ID: " + this.borrowerID);
     }
   }
+
+  public List<String> getBookDetailList() {
+    return Arrays.asList(
+        this.title,
+        this.author,
+        this.ISBN,
+        String.valueOf(this.availability),
+        this.borrowerName != null ? this.borrowerName : "",
+        this.borrowerPhone != null ? this.borrowerPhone : "",
+        String.valueOf(this.borrowerID)
+    );
+}
 }

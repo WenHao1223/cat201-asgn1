@@ -14,4 +14,6 @@ public interface LibraryInterface {
   public ArrayList<Book> searchBook(String searched);
 
   public int getNumberOfBooks();
+
+  public void close();
 }

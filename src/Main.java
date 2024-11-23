@@ -6,6 +6,7 @@ import models.Library;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Main {
   public static void main(String[] args) {
@@ -74,6 +75,23 @@ public class Main {
     for (Book book : foundBooks) {
       book.displayBookDetails();
       System.out.println();
+    }
+
+    // rewrite the data to the file
+    try {
+      System.out.println("Writing data to " + filepath + "...\n");
+      FileWriter file = new FileWriter(filepath);
+
+      file.write("title,author,ISBN,availability,borrowerName,borrowerPhone,borrowerID\n");
+
+      for (Book book : library.getBooks()) {
+        List<String> bookDetails = book.getBookDetailList();
+        file.write(String.join(",", bookDetails) + "\n");
+      }
+
+      file.close();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 }

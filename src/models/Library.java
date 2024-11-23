@@ -1,6 +1,8 @@
 package models;
 
 import interfaces.LibraryInterface;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Library extends Book implements LibraryInterface {
@@ -22,6 +24,15 @@ public class Library extends Book implements LibraryInterface {
 
   public void addBook(String title, String author, String ISBN) {
     System.out.println("Adding book...");
+
+    for (Book book : books) {
+      if (book.ISBN.equals(ISBN)) {
+        System.out.println("Book already exists.");
+        System.out.println("-----------------\n");
+        return;
+      }
+    }
+
     System.out.println("-----------------");
     Book book = new Book(title, author, ISBN);
     books.add(book);
@@ -37,6 +48,10 @@ public class Library extends Book implements LibraryInterface {
       System.out.println();
     }
     System.out.println("-----------------\n");
+  }
+
+  public ArrayList<Book> getBooks() {
+    return books;
   }
 
   public ArrayList<Book> searchBook(String searched) {
