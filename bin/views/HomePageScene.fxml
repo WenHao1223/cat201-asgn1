@@ -24,12 +24,26 @@
       </VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="237.0" layoutY="64.0">
          <children>
+            <AnchorPane>
+               <TextField fx:id="searchTextField" maxHeight="1.7976931348623157E308"
+                  prefHeight="26.0" prefWidth="300.0"
+                  promptText="Search ..." styleClass="text-field" />
+               <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
+                  text="Close" styleClass="red-text" onAction="#handleSearchCloseButtonAction"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4">
+                  <graphic>
+                     <ImageView fitWidth="10.0" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/icons/close-red.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+            </AnchorPane>
             <ButtonBar buttonMinWidth="40.0">
                <buttons>
-                  <TextField maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0"
-                     promptText="Search ..." styleClass="text-field" />
                   <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
-                     text="search" styleClass="button">
+                     text="Search" styleClass="button" onAction="#handleSearchBookButtonAction">
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>

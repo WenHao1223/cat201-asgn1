@@ -66,6 +66,12 @@ AnchorPane {
   -fx-background-color: #C1351D;
 }
 
+.button.red-text {
+  -fx-text-fill: #DB4437;
+  -fx-font-size: 14px;
+  -fx-background-color: transparent;
+}
+
 .button.black {
   -fx-background-color: #000000;
   -fx-text-fill: white;

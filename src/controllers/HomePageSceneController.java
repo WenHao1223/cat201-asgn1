@@ -12,23 +12,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 // class
 import models.Library;
 import models.Book;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class HomePageSceneController {
   @FXML
   private FlowPane bookFlowPane;
 
+  @FXML
+  private TextField searchTextField;
+
   private Library library;
 
   public void setLibrary(Library library) {
     this.library = library;
-    loadBookCards();
+    loadBookCards(library.getBooks());
   }
 
   @FXML
@@ -36,9 +40,8 @@ public class HomePageSceneController {
 
   }
 
-  private void loadBookCards() {
+  private void loadBookCards(ArrayList<Book> books) {
     bookFlowPane.getChildren().clear();
-    List<Book> books = library.getBooks();
     try {
       System.out.println("Loading book cards...");
       for (Book book : books) {
@@ -52,6 +55,23 @@ public class HomePageSceneController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  @FXML
+  private void handleSearchBookButtonAction(ActionEvent event) {
+    String searchText = searchTextField.getText().trim();
+    if (searchText.isEmpty()) {
+      loadBookCards(library.getBooks());
+    } else {
+      ArrayList<Book> filteredBooks = library.searchBook(searchText);
+      loadBookCards(filteredBooks);
+    }
+  }
+
+  @FXML
+  private void handleSearchCloseButtonAction(ActionEvent event) {
+    searchTextField.clear();
+    loadBookCards(library.getBooks());
   }
 
   @FXML
