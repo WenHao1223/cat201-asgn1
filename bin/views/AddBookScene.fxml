@@ -60,7 +60,7 @@
                      GridPane.columnIndex="1" />
                   <TextField fx:id="tfAuthor" promptText="John Doe" GridPane.columnIndex="1"
                      GridPane.rowIndex="1" />
-                  <TextField fx:id="tfISBN" promptText="978-x-xxxxx-xxx-x " GridPane.columnIndex="1"
+                  <TextField fx:id="tfISBN" promptText="97x-xxxxxxxxxx " GridPane.columnIndex="1"
                      GridPane.rowIndex="2" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0"
                      GridPane.columnIndex="1" GridPane.rowIndex="3">
