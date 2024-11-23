@@ -8,6 +8,27 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "application.Main",
+      "projectName": "cat201-asgn1_1cf89c5b"
+    },
+    {
+      "type": "java",
+      "name": "Test",
+      "request": "launch",
+      "mainClass": "application.Test",
+      "projectName": "cat201-asgn1_1cf89c5b"
+    },
+    {
+      "type": "java",
+      "name": "Test",
+      "request": "launch",
+      "mainClass": "Test",
+      "projectName": "cat201-asgn1_1cf89c5b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "Main",
       "projectName": "cat201-asgn1_1cf89c5b"
     },
