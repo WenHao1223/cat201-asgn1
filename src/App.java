@@ -11,6 +11,11 @@ import models.Book;
 import models.Library;
 
 import java.util.List;
+
+import controllers.AddBookSceneController;
+import controllers.HomePageSceneController;
+import controllers.ViewBookSceneController;
+
 import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -19,10 +24,15 @@ public class App extends Application {
     private static Library library = new Library();
     private static String filePath = "src/data/data.csv";
 
+    // initialize
+    public App() {
+        System.out.println("Program is starting...");
+        loadDataFromFile(library, filePath);
+    }
+
     @Override
     public void start(Stage primaryStage) {
-        // Load data from CSV file
-        loadDataFromFile(library, filePath);
+        System.out.println("Program is running...");
 
         int page = 1;
         /*
@@ -36,24 +46,37 @@ public class App extends Application {
         try {
 
             Parent root;
+            FXMLLoader fxmlLoader;
             switch (page) {
                 case 1:
-                    root = FXMLLoader.load(getClass().getResource("views/HomePageScene.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomePageScene.fxml"));
+                    root = fxmlLoader.load();
+                    HomePageSceneController homeController = fxmlLoader.getController();
+                    homeController.setLibrary(library);
                     break;
                 case 2:
-                    root = FXMLLoader.load(getClass().getResource("views/AddBookScene.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/AddBookScene.fxml"));
+                    root = fxmlLoader.load();
+                    AddBookSceneController addBookController = fxmlLoader.getController();
+                    addBookController.setLibrary(library);
                     break;
                 case 3:
-                    root = FXMLLoader.load(getClass().getResource("views/ViewBookScene.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/ViewBookScene.fxml"));
+                    root = fxmlLoader.load();
+                    ViewBookSceneController viewBookController = fxmlLoader.getController();
+                    viewBookController.setLibrary(library);
                     break;
                 case 4:
-                    root = FXMLLoader.load(getClass().getResource("components/BookCard.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
+                    root = fxmlLoader.load();
                     break;
                 case 5:
-                    root = FXMLLoader.load(getClass().getResource("components/BorrowDialogBox.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowDialogBox.fxml"));
+                    root = fxmlLoader.load();
                     break;
                 case 6:
-                    root = FXMLLoader.load(getClass().getResource("components/BorrowerDetailsBox.fxml"));
+                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowerDetailsBox.fxml"));
+                    root = fxmlLoader.load();
                     break;
                 default:
                     throw new IllegalArgumentException("Invalid page number: " + page);
@@ -93,11 +116,6 @@ public class App extends Application {
             e.printStackTrace();
             System.err.println(e.getMessage());
         }
-
-        // Add a new book
-        library.addBook("The Alchemist", "Paulo Coelho", "978-0062315007");
-        library.viewBooks();
-        System.out.println("Number of books: " + library.getNumberOfBooks() + "\n");
     }
 
     public void stop() {

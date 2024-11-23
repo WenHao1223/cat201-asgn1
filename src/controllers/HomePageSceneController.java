@@ -14,16 +14,39 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+// class
+import models.Library;
+import models.Book;
+
+import java.util.List;
+
 public class HomePageSceneController {
   @FXML
   private FlowPane bookFlowPane;
 
+  private Library library;
+
+  public void setLibrary(Library library) {
+    this.library = library;
+    loadBookCards();
+  }
+
   @FXML
   public void initialize() {
+
+  }
+
+  private void loadBookCards() {
+    bookFlowPane.getChildren().clear();
+    List<Book> books = library.getBooks();
     try {
-      for (int i = 0; i < 20; i++) {
+      System.out.println("Loading book cards...");
+      for (Book book : books) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
         Node bookCard = fxmlLoader.load();
+        BookCardController controller = fxmlLoader.getController();
+        System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getISBN());
+        controller.setBookDetails(book.getTitle(), book.getAuthor(), book.getISBN());
         bookFlowPane.getChildren().add(bookCard);
       }
     } catch (IOException e) {

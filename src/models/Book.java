@@ -1,9 +1,9 @@
 package models;
 
-import java.util.Arrays;
-import java.util.List;
-
 import interfaces.BookInterface;
+
+import java.util.List;
+import java.util.Arrays;
 
 public class Book implements BookInterface {
   String title;
@@ -90,6 +90,7 @@ public class Book implements BookInterface {
     }
   }
 
+  // for file writing
   public List<String> getBookDetailList() {
     return Arrays.asList(
         this.title,
@@ -100,5 +101,17 @@ public class Book implements BookInterface {
         this.borrowerPhone != null ? this.borrowerPhone : "",
         String.valueOf(this.borrowerID)
     );
-}
+  }
+
+  public String getTitle() {
+    return this.title;
+  }
+
+  public String getAuthor() {
+    return this.author;
+  }
+
+  public String getISBN() {
+    return this.ISBN;
+  }
 }
