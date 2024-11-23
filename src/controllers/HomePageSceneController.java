@@ -32,7 +32,11 @@ public class HomePageSceneController {
 
   public void setLibrary(Library library) {
     this.library = library;
-    loadBookCards(library.getBooks());
+    if (library != null) {
+        loadBookCards(library.getBooks());
+    } else {
+        System.err.println("Library is null in setLibrary");
+    }
   }
 
   @FXML
@@ -43,12 +47,10 @@ public class HomePageSceneController {
   private void loadBookCards(ArrayList<Book> books) {
     bookFlowPane.getChildren().clear();
     try {
-      System.out.println("Loading book cards...");
       for (Book book : books) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
         Node bookCard = fxmlLoader.load();
         BookCardController controller = fxmlLoader.getController();
-        System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getISBN());
         controller.setBookDetails(book.getTitle(), book.getAuthor(), book.getISBN());
         bookFlowPane.getChildren().add(bookCard);
       }
@@ -86,6 +88,9 @@ public class HomePageSceneController {
       try {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/AddBookScene.fxml"));
         Parent root = fxmlLoader.load();
+        AddBookSceneController addBookController = fxmlLoader.getController();
+        addBookController.setLibrary(library);
+        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

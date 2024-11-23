@@ -56,14 +56,14 @@
                   <Label text="Author" GridPane.rowIndex="1" />
                   <Label text="ISBN" GridPane.rowIndex="2" />
                   <Label text="Thumbnail" GridPane.rowIndex="3" />
-                  <TextField promptText="Alice in Wonderland" GridPane.columnIndex="1" />
-                  <TextField promptText="John Doe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField promptText="978-x-xxxxx-xxx-x " GridPane.columnIndex="1"
+                  <TextField fx:id="tfTitle" promptText="Alice in Wonderland" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfAuthor" promptText="John Doe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfISBN" promptText="978-x-xxxxx-xxx-x " GridPane.columnIndex="1"
                      GridPane.rowIndex="2" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0"
                      GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <Button mnemonicParsing="false" text="Choose Image..">
+                        <Button mnemonicParsing="false" text="Choose Image.." onAction="#handleUploadThumbnailAction">
                            <graphic>
                               <ImageView fitWidth="20.0" preserveRatio="true">
                                  <image>
@@ -72,7 +72,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label disable="true" text="&lt;Empty&gt;" />
+                        <Label fx:id="labelThumbnail" disable="true" text="&lt;Empty&gt;" />
                      </children>
                   </HBox>
                </children>
