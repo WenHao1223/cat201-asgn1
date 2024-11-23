@@ -1,4 +1,5 @@
 package models;
+
 import interfaces.BookInterface;
 
 public class Book implements BookInterface {
@@ -10,7 +11,7 @@ public class Book implements BookInterface {
   String borrowerPhone;
   long borrowerID;
 
-  public Book () {
+  public Book() {
     this.title = "";
     this.author = "";
     this.ISBN = "";
@@ -20,7 +21,7 @@ public class Book implements BookInterface {
     this.borrowerID = 0;
   }
 
-  public Book (String title, String author, String ISBN) {
+  public Book(String title, String author, String ISBN) {
     this.title = title;
     this.author = author;
     this.ISBN = ISBN;
@@ -30,7 +31,8 @@ public class Book implements BookInterface {
     this.borrowerID = 0;
   }
 
-  public Book (String title, String author, String ISBN, boolean availability, String borrowerName, String borrowerPhone, long borrowerID) {
+  public Book(String title, String author, String ISBN, boolean availability, String borrowerName, String borrowerPhone,
+      long borrowerID) {
     this.title = title;
     this.author = author;
     this.ISBN = ISBN;
@@ -40,34 +42,6 @@ public class Book implements BookInterface {
     this.borrowerID = borrowerID;
   }
 
-  public void addBook(String title, String author, String ISBN) {
-    System.out.println("Adding book...");
-    this.title = title;
-    this.author = author;
-    this.ISBN = ISBN;
-    System.out.println("Book added: " + this.title);
-  }
-
-  public void addDetailsWithBorrower(String title, String author, String ISBN, boolean availability, String borrowerName, String borrowerPhone, long borrowerID) {
-    this.title = title;
-    this.author = author;
-    this.ISBN = ISBN;
-    this.availability = availability;
-    this.borrowerName = borrowerName;
-    this.borrowerPhone = borrowerPhone;
-    this.borrowerID = borrowerID;
-  }
-
-  public void setAvailability(boolean availability) {
-    this.availability = availability;
-  }
-
-  public void addBorrowerDetails(String borrowerName, String borrowerPhone, long borrowerID) {
-    this.borrowerName = borrowerName;
-    this.borrowerPhone = borrowerPhone;
-    this.borrowerID = borrowerID;
-  }
-  
   public void borrowBook(String borrowerName, String borrowerPhone, long borrowerID) {
     System.out.println("Borrowing book...");
 
@@ -99,7 +73,6 @@ public class Book implements BookInterface {
   }
 
   public void displayBookDetails() {
-    System.out.println("Displaying book details...");
     System.out.println("Title: " + this.title);
     System.out.println("Author: " + this.author);
     System.out.println("ISBN: " + this.ISBN);
@@ -107,14 +80,10 @@ public class Book implements BookInterface {
     if (this.availability) {
       System.out.println("Availability: Available");
     } else {
-      System.out.println("Availability: Borrowed by " + this.borrowerName);
+      System.out.println("Availability: Borrowed");
+      System.out.println("Borrower Name: " + this.borrowerName);
+      System.out.println("Borrower Phone: " + this.borrowerPhone);
+      System.out.println("Borrower ID: " + this.borrowerID);
     }
-  }
-
-  public void displayBorrowerDetails() {
-    System.out.println("Displaying borrower details...");
-    System.out.println("Borrower Name: " + this.borrowerName);
-    System.out.println("Borrower Phone: " + this.borrowerPhone);
-    System.out.println("Borrower ID: " + this.borrowerID);
   }
 }
