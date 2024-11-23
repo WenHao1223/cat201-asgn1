@@ -3,10 +3,18 @@ package controllers;
 import models.Library;
 import models.Book;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ViewBookSceneController {
   private Library library;
@@ -57,6 +65,22 @@ public class ViewBookSceneController {
       bookImageView.setImage(image);
     } catch (Exception e) {
       System.err.println("Error loading image: " + e.getMessage());
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void handleBackButtonAction(ActionEvent event) {
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomePageScene.fxml"));
+      Parent root = fxmlLoader.load();
+      HomePageSceneController homeController = fxmlLoader.getController();
+      homeController.setLibrary(library);
+
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(new Scene(root));
+      stage.show();
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }

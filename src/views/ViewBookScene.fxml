@@ -29,7 +29,7 @@
          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
          <children>
             <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="black"
-               text="Back">
+               text="Back" onAction="#handleBackButtonAction">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
                      preserveRatio="true">
