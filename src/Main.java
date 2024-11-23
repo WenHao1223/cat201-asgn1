@@ -71,11 +71,23 @@ public class Main {
     System.out.println("Number of books: " + library.getNumberOfBooks() + "\n");
 
     // Search for a book
-    List<Book> foundBooks = library.searchBook("Great");
+    List<Book> foundBooks = library.searchBook("978");
     for (Book book : foundBooks) {
       book.displayBookDetails();
       System.out.println();
     }
+
+
+    // Borrow a book
+    Book borrowBook = library.searchBook("978-0062315007").get(0);
+    borrowBook.borrowBook("John Doe", "1234567890", 1234567890);
+    library.viewBooks();
+    borrowBook.borrowBook("John Doe", "1234567890", 1234567890);
+
+    // Return a book
+    borrowBook.returnBook();
+    library.viewBooks();
+    borrowBook.returnBook();
 
     // rewrite the data to the file
     try {
