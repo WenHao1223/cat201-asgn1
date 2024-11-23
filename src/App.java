@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        int page = 6;
+        int page = 1;
         /*
          * 1 - HomePageScene
          * 2 - AddBookScene
@@ -45,8 +45,9 @@ public class App extends Application {
             }
             System.out.println("Loaded scene for page: " + page);
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Hello World!");
+            // primaryStage.setTitle("ABC Library");
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false); // Disable maximize button
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

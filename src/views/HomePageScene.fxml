@@ -29,7 +29,7 @@
                   <TextField maxHeight="1.7976931348623157E308" prefHeight="26.0" prefWidth="300.0"
                      promptText="Search ..." styleClass="text-field" />
                   <Button contentDisplay="GRAPHIC_ONLY" maxWidth="40.0" mnemonicParsing="false"
-                     text="Add" styleClass="button">
+                     text="search" styleClass="button">
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
@@ -41,7 +41,7 @@
                </buttons>
             </ButtonBar>
             <Button mnemonicParsing="false"
-               text="Add" styleClass="orange">
+               text="Add" styleClass="orange" onAction="#handleAddBookButtonAction">
                <graphic>
                   <ImageView fitWidth="20.0" preserveRatio="true">
                      <image>

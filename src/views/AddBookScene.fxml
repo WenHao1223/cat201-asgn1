@@ -80,7 +80,7 @@
             <HBox alignment="CENTER_RIGHT" spacing="10">
                <children>
                   <Button mnemonicParsing="false" styleClass="red"
-                     text="Cancel" prefWidth="100" prefHeight="50">
+                     text="Cancel" prefWidth="100" prefHeight="50" onAction="#handleCancelButtonAction">
                      <graphic>
                         <ImageView fitWidth="20.0" preserveRatio="true">
                            <image>
