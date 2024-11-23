@@ -95,8 +95,8 @@
                               <Insets bottom="20.0" left="5.0" right="5.0" />
                            </padding>
                         </GridPane>
-                        <Button mnemonicParsing="false" prefWidth="400.0"
-                           styleClass="orange" text="Borrow">
+                        <Button fx:id="btnBorrowOrReturn" mnemonicParsing="false" prefWidth="400.0"
+                           styleClass="orange" text="Borrow" onAction="#handleBorrowOrReturnButtonAction">
                            <font>
                               <Font size="18.0" />
                            </font>
