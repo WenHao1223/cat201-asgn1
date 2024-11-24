@@ -106,36 +106,26 @@ public class ViewBookSceneController {
   private void handleBorrowOrReturnButtonAction(ActionEvent event) {
     if (this.book.getAvailability()) {
       System.out.println("Borrowing book...");
-      Alert alert = new Alert(AlertType.CONFIRMATION);
-      alert.setTitle("Borrow Book");
-      alert.setHeaderText(null);
-      alert.setContentText("Are you sure you want to borrow this book?");
-      Optional<ButtonType> action = alert.showAndWait();
+      try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowDialogBox.fxml"));
+        Parent root = fxmlLoader.load();
+        BorrowDialogBoxController borrowController = fxmlLoader.getController();
+        borrowController.setLibrary(library);
+        borrowController.setBookDetails(this.book.getISBN());
 
-      if (action.get() == ButtonType.OK) {
-        try {
-          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowDialogBox.fxml"));
-          Parent root = fxmlLoader.load();
-          BorrowDialogBoxController borrowController = fxmlLoader.getController();
-          borrowController.setLibrary(library);
-          borrowController.setBookDetails(this.book.getISBN());
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Borrow Book");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        dialogStage.setResizable(false);
+        dialogStage.setScene(new Scene(root));
 
-          Stage dialogStage = new Stage();
-          dialogStage.setTitle("Borrow Book");
-          dialogStage.initModality(Modality.WINDOW_MODAL);
-          dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
-          dialogStage.setResizable(false);
-          dialogStage.setScene(new Scene(root));
+        // Set the close request handler
+        borrowController.setCloseRequestHandler(dialogStage);
 
-          // Set the close request handler
-          borrowController.setCloseRequestHandler(dialogStage);
-
-          dialogStage.showAndWait();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      } else {
-        return;
+        dialogStage.showAndWait();
+      } catch (IOException e) {
+        e.printStackTrace();
       }
     } else {
       System.out.println("Returning book...");

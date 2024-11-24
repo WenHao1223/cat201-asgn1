@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -33,9 +34,9 @@ public class HomePageSceneController {
   public void setLibrary(Library library) {
     this.library = library;
     if (library != null) {
-        loadBookCards(library.getBooks());
+      loadBookCards(library.getBooks());
     } else {
-        System.err.println("Library is null in setLibrary");
+      System.err.println("Library is null in setLibrary");
     }
   }
 
@@ -47,6 +48,11 @@ public class HomePageSceneController {
   private void loadBookCards(ArrayList<Book> books) {
     bookFlowPane.getChildren().clear();
     try {
+      if (books.isEmpty()) {
+        Label noBooksLabel = new Label("No books found.");
+        bookFlowPane.getChildren().add(noBooksLabel);
+        return;
+      }
       for (Book book : books) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
         Node bookCard = fxmlLoader.load();
