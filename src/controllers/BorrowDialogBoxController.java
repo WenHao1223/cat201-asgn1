@@ -1,5 +1,6 @@
 package controllers;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -67,18 +68,57 @@ public class BorrowDialogBoxController {
   }
 
   public void handleBorrowButtonAction(ActionEvent event) {
+    String borrowerName = "";
+    String borrowerPhone = "";
+    long borrowerID = 0;
+
+    try {
+      borrowerName = tfBorrowerName.getText();
+      borrowerPhone = tfBorrowerPhone.getText();
+      borrowerID = Long.parseLong(tfBorrowerID.getText() == null || tfBorrowerID.getText().trim().isEmpty() ? "0"
+          : tfBorrowerID.getText().trim());
+    } catch (Exception e) {
+      System.out.println("Wrong input format: " + e.getMessage());
+    }
+
+    if (borrowerName.isEmpty() || borrowerPhone.isEmpty() || tfBorrowerID.getText().isEmpty()) {
+      Alert alert1 = new Alert(AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("Please fill in all fields.");
+      alert1.showAndWait();
+      return;
+    }
+
+    // check for regex
+    if (!borrowerPhone.matches("^(011-\\d{8})$|^(01[02-9]-\\d{7})$|^(0[2-9]\\d?-\\d{7})$")) {
+      Alert alert1 = new Alert(AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("Phone number must follow the format of 0x-xxxxxxx or 011-xxxxxxxx.");
+      alert1.showAndWait();
+      return;
+    }
+
+    if (!tfBorrowerID.getText().matches("^\\d{6}$|^\\d{8}$")) {
+      Alert alert1 = new Alert(AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText(
+          "Borrower ID must be a valid USM Student ID (e.g., 2230xxxx).");
+      alert1.showAndWait();
+      return;
+    }
+
     Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Borrow Book");
     alert.setHeaderText(null);
     alert.setContentText("Are you sure you want to borrow this book?");
     Optional<ButtonType> action = alert.showAndWait();
+    ((Node) (event.getSource())).getScene().getWindow().hide();
 
     if (action.isPresent() && action.get() == ButtonType.OK) {
       try {
-        String borrowerName = tfBorrowerName.getText();
-        String borrowerPhone = tfBorrowerPhone.getText();
-        long borrowerID = Long.parseLong(tfBorrowerID.getText());
-
         book.borrowBook(borrowerName, borrowerPhone, borrowerID);
 
         // Show a confirmation alert box
