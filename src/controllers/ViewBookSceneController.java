@@ -74,6 +74,8 @@ public class ViewBookSceneController {
 
         if (!this.book.getAvailability()) {
           btnBorrowOrReturn.setText("Return");
+        } else {
+          btnBorrowOrReturn.setText("Borrow");
         }
       } else {
         System.err.println("Book is null in setBookDetails");
@@ -137,6 +139,21 @@ public class ViewBookSceneController {
       }
     } else {
       System.out.println("Returning book...");
+      Alert alert = new Alert(AlertType.CONFIRMATION);
+      alert.setTitle("Borrow Book");
+      alert.setHeaderText(null);
+      alert.setContentText("Are you sure " + book.getBorrowerName() + " wants to return this book?");
+      Optional<ButtonType> action = alert.showAndWait();
+
+      if (action.get() == ButtonType.OK) {
+        try {
+          book.returnBook();
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else {
+        return;
+      }
     }
     setBookDetails(this.book.getISBN());
   }
