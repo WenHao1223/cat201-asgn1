@@ -1,26 +1,27 @@
-
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 
-// class
 import models.Book;
 import models.Library;
-
-import java.util.List;
-
-import javax.swing.text.View;
 
 import controllers.AddBookSceneController;
 import controllers.HomePageSceneController;
 import controllers.ViewBookSceneController;
 
-import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class App extends Application {
     private static Library library = new Library();
@@ -91,9 +92,17 @@ public class App extends Application {
             }
             System.out.println("Loaded scene for page: " + page);
             Scene scene = new Scene(root);
+
             // primaryStage.setTitle("ABC Library");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false); // Disable maximize button
+
+            // Set close request handler
+            primaryStage.setOnCloseRequest(event -> {
+                event.consume(); // Consume the event to prevent the window from closing immediately
+                handleWindowCloseRequest(primaryStage);
+            });
+
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -123,6 +132,17 @@ public class App extends Application {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
+        }
+    }
+
+    private void handleWindowCloseRequest(Stage stage) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Exit Program Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to quit the program?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            stage.close();
         }
     }
 
