@@ -19,15 +19,14 @@
    <children>
       <VBox prefHeight="54.0" prefWidth="720.0" styleClass="app-bar">
          <children>
-            <Text text="ABC Library" styleClass="app-title" />
+            <Text text="T L T Library" styleClass="app-title" />
          </children>
       </VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="237.0" layoutY="64.0">
          <children>
             <AnchorPane>
                <TextField fx:id="tfSearch" maxHeight="1.7976931348623157E308" prefHeight="40.0"
-                  prefWidth="300.0" promptText="Search ..." styleClass="text-field"
-                  onAction="#handleSearchBookButtonAction" />
+                  prefWidth="300.0" promptText="Search ..." styleClass="text-field" />
                <Button contentDisplay="GRAPHIC_ONLY" maxWidth="30.0" mnemonicParsing="false"
                   text="Close" styleClass="red-text" onAction="#handleSearchCloseButtonAction"
                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

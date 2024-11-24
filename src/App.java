@@ -93,7 +93,8 @@ public class App extends Application {
             System.out.println("Loaded scene for page: " + page);
             Scene scene = new Scene(root);
 
-            // primaryStage.setTitle("ABC Library");
+            // primaryStage.setTitle("T L T Library");
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
             primaryStage.setScene(scene);
             primaryStage.setResizable(false); // Disable maximize button
 

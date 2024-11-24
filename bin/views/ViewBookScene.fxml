@@ -23,7 +23,7 @@
    <children>
       <VBox prefHeight="54.0" prefWidth="720.0" styleClass="app-bar">
          <children>
-            <Label text="ABC Library" styleClass="app-title" />
+            <Label text="T L T Library" styleClass="app-title" />
          </children>
       </VBox>
       <VBox layoutY="52.8" prefHeight="367.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0"
