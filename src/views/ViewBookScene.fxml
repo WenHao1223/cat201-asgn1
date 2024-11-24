@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -86,17 +87,23 @@
 
                               <Label fx:id="authorNameLabel" text="Author Name"
                                  GridPane.columnIndex="1" />
-                              <Label fx:id="isbnLabel" text="ISBN"
-                                 GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="isAvailableLabel" text="Available"
-                                 GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="isbnLabel" text="ISBN" GridPane.columnIndex="1"
+                                 GridPane.rowIndex="1" />
+                              <HBox alignment="CENTER_LEFT" spacing="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label fx:id="isAvailableLabel" text="Available" />
+                                    <Hyperlink fx:id="borrowerNameLink" text="Borrower Name"
+                                       onAction="#handleBorrowerNameClick" />
+                                 </children>
+                              </HBox>
                            </children>
                            <padding>
                               <Insets bottom="20.0" left="5.0" right="5.0" />
                            </padding>
                         </GridPane>
                         <Button fx:id="btnBorrowOrReturn" mnemonicParsing="false" prefWidth="400.0"
-                           styleClass="orange" text="Borrow" onAction="#handleBorrowOrReturnButtonAction">
+                           styleClass="orange" text="Borrow"
+                           onAction="#handleBorrowOrReturnButtonAction">
                            <font>
                               <Font size="18.0" />
                            </font>

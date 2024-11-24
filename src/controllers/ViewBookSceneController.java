@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +41,9 @@ public class ViewBookSceneController {
   private Label isAvailableLabel;
 
   @FXML
+  private Hyperlink borrowerNameLink;
+
+  @FXML
   private Button btnBorrowOrReturn;
 
   @FXML
@@ -50,22 +54,32 @@ public class ViewBookSceneController {
   }
 
   public void setBookDetails(String isbn) {
-    System.out.println(isbn);
-    this.book = library.getBookByISBN(isbn);
+    if (library != null) {
+      System.out.println(isbn);
+      this.book = library.getBookByISBN(isbn);
 
-    if (this.book != null) {
-      bookTitleLabel.setText(this.book.getTitle());
-      authorNameLabel.setText(this.book.getAuthor());
-      isbnLabel.setText(this.book.getISBN());
-      isAvailableLabel
-          .setText(this.book.getAvailability() ? "Available" : "Borrowed by " + this.book.getBorrowerName());
+      if (this.book != null) {
+        bookTitleLabel.setText(this.book.getTitle());
+        authorNameLabel.setText(this.book.getAuthor());
+        isbnLabel.setText(this.book.getISBN());
+        isAvailableLabel
+            .setText(this.book.getAvailability() ? "Yes" : "Borrowed by");
+
+        if (!this.book.getAvailability()) {
+          borrowerNameLink.setText(this.book.getBorrowerName());
+        }
+        borrowerNameLink.setVisible(!this.book.getAvailability());
+
+        setImage(isbn);
+
+        if (!this.book.getAvailability()) {
+          btnBorrowOrReturn.setText("Return");
+        }
+      } else {
+        System.err.println("Book is null in setBookDetails");
+      }
     } else {
-      System.err.println("Book is null in setBookDetails");
-    }
-    setImage(isbn);
-
-    if (!this.book.getAvailability()) {
-      btnBorrowOrReturn.setText("Return");
+      System.err.println("Library is null in ViewBookSceneController");
     }
   }
 
@@ -113,7 +127,7 @@ public class ViewBookSceneController {
 
           // Set the close request handler
           borrowController.setCloseRequestHandler(dialogStage);
-          
+
           dialogStage.showAndWait();
         } catch (IOException e) {
           e.printStackTrace();
@@ -138,6 +152,27 @@ public class ViewBookSceneController {
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
       stage.setScene(new Scene(root));
       stage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  public void handleBorrowerNameClick(ActionEvent event) {
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowerDetailsBox.fxml"));
+      Parent root = fxmlLoader.load();
+      BorrowerDetailsBoxController borrowerController = fxmlLoader.getController();
+      borrowerController.setLibrary(library);
+      borrowerController.setBookDetails(this.book.getISBN());
+
+      Stage dialogStage = new Stage();
+      dialogStage.setTitle("Borrow Book");
+      dialogStage.initModality(Modality.WINDOW_MODAL);
+      dialogStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+      dialogStage.setResizable(false);
+      dialogStage.setScene(new Scene(root));
+      dialogStage.show();
     } catch (IOException e) {
       e.printStackTrace();
     }
