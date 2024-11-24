@@ -85,28 +85,17 @@ public class HomePageSceneController {
 
   @FXML
   private void handleAddBookButtonAction(ActionEvent event) {
-    Alert alert = new Alert(AlertType.CONFIRMATION);
-    alert.setTitle("Confirmation");
-    alert.setHeaderText(null);
-    alert.setContentText("Are you sure you want to add book?");
-    Optional<ButtonType> action = alert.showAndWait();
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/AddBookScene.fxml"));
+      Parent root = fxmlLoader.load();
+      AddBookSceneController addBookController = fxmlLoader.getController();
+      addBookController.setLibrary(library);
 
-    if (action.get() == ButtonType.OK) {
-      try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/AddBookScene.fxml"));
-        Parent root = fxmlLoader.load();
-        AddBookSceneController addBookController = fxmlLoader.getController();
-        addBookController.setLibrary(library);
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } else {
-      // User chose CANCEL or closed the dialog
-      return;
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(new Scene(root));
+      stage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 }

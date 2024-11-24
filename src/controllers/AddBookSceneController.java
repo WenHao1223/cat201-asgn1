@@ -44,19 +44,20 @@ public class AddBookSceneController {
     }
 
     @FXML
-    private void handleUploadThumbnailAction (ActionEvent event) {
+    private void handleUploadThumbnailAction(ActionEvent event) {
         // by clicking, file picker will open
         // should be able to store the location to image file at lFile
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image File");
 
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg",
+                "*.jpeg");
         fileChooser.getExtensionFilters().add(extFilter);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
 
-        if (file != null) { 
+        if (file != null) {
             lFile = file;
             System.out.println("Selected file: " + lFile.getAbsolutePath());
 
@@ -77,7 +78,7 @@ public class AddBookSceneController {
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to cancel adding book?");
         Optional<ButtonType> action = alert.showAndWait();
-        
+
         if (action.isPresent() && action.get() == ButtonType.OK) {
             // User chose OK, proceed with redirection
             try {
@@ -98,7 +99,39 @@ public class AddBookSceneController {
         }
     }
 
-    @FXML void handleAddButtonAction(ActionEvent event) {
+    @FXML
+    void handleAddButtonAction(ActionEvent event) {
+        String title = "";
+        String author = "";
+        String ISBN = "";
+
+        try {
+            title = tfTitle.getText().trim();
+            author = tfAuthor.getText().trim();
+            ISBN = tfISBN.getText().trim();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (title.isEmpty() || author.isEmpty() || ISBN.isEmpty() || lFile == null) {
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setTitle("Error");
+            errorAlert.setHeaderText(null);
+            errorAlert.setContentText("Please fill all fields");
+            errorAlert.showAndWait();
+            return;
+        }
+
+        // check for regex
+        if (!ISBN.matches("^(97[89])-\\d{9}(\\d|X)$")) {
+            Alert alert1 = new Alert(AlertType.ERROR);
+            alert1.setTitle("Error");
+            alert1.setHeaderText(null);
+            alert1.setContentText("ISBN must be in the format 978-xxxxxxxxxx or 979-xxxxxxxxxx (ISBN-13 based).");
+            alert1.showAndWait();
+            return;
+        }
+
         // Show a confirmation alert box
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Add Book");
@@ -108,19 +141,6 @@ public class AddBookSceneController {
 
         if (action.isPresent() && action.get() == ButtonType.OK) {
             // User chose OK, proceed with adding book
-            String title = tfTitle.getText();
-            String author = tfAuthor.getText();
-            String ISBN = tfISBN.getText();
-
-            if (title.isEmpty() || author.isEmpty() || ISBN.isEmpty() || lFile == null) {
-                Alert errorAlert = new Alert(AlertType.ERROR);
-                errorAlert.setTitle("Error");
-                errorAlert.setHeaderText(null);
-                errorAlert.setContentText("Please fill all fields");
-                errorAlert.showAndWait();
-                return;
-            }
-
             library.addBook(title, author, ISBN);
             Alert infoAlert = new Alert(AlertType.INFORMATION);
             infoAlert.setTitle("Success");
@@ -134,7 +154,7 @@ public class AddBookSceneController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
             infoAlert.setContentText("Book added successfully");
             infoAlert.showAndWait();
 
