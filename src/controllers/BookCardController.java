@@ -69,6 +69,7 @@ public class BookCardController {
       System.err.println("Labels are not initialized");
       return;
     }
+    
     bookTitleLabel.setText(title);
     authorNameLabel.setText(author);
     isbnLabel.setText(isbn);
