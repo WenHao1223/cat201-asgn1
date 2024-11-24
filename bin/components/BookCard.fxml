@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-   prefHeight="356.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/23.0.1"
+   prefHeight="380.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/23.0.1"
    xmlns:fx="http://javafx.com/fxml/1"
    fx:controller="controllers.BookCardController">
    <children>
@@ -46,6 +46,14 @@
                      </font>
                   </Label>
                   <Label fx:id="isbnLabel" text="ISBN">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="availableLabel" text="Available" styleClass="green">
                      <font>
                         <Font size="12.0" />
                      </font>

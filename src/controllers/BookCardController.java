@@ -63,16 +63,17 @@ public class BookCardController {
     });
   }
 
-  public void setBookDetails(String title, String author, String isbn) {
-    if (bookTitleLabel == null || authorNameLabel == null || isbnLabel == null
+  public void setBookDetails(String title, String author, String isbn, boolean isAvailable) {
+    if (bookTitleLabel == null || authorNameLabel == null || isbnLabel == null || availableLabel == null
         || bookImageView == null) {
       System.err.println("Labels are not initialized");
       return;
     }
-    System.out.println("Setting book details: " + title + ", " + author + ", " + isbn);
     bookTitleLabel.setText(title);
     authorNameLabel.setText(author);
     isbnLabel.setText(isbn);
+    availableLabel.setText(isAvailable ? "Available" : "Borrowed");
+    availableLabel.getStyleClass().add(isAvailable ? "green" : "red");
     setImage(isbn);
   }
 

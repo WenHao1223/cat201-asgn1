@@ -85,6 +85,14 @@ AnchorPane {
   -fx-background-color: #333333;
 }
 
+.label.green {
+  -fx-text-fill: green;
+}
+
+.label.red {
+  -fx-text-fill: red;
+}
+
 .text-field {
   -fx-background-color: white;
   -fx-border-color: #4285F4;

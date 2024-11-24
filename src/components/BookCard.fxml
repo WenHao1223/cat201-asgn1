@@ -29,7 +29,7 @@
                   </HBox.margin>
                </ImageView>
             </StackPane>
-            <VBox prefHeight="200.0" prefWidth="200.0">
+            <VBox prefHeight="240.0" prefWidth="200.0">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
@@ -46,6 +46,14 @@
                      </font>
                   </Label>
                   <Label fx:id="isbnLabel" text="ISBN">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="isAvailable" text="Available" styleClass="green">
                      <font>
                         <Font size="12.0" />
                      </font>

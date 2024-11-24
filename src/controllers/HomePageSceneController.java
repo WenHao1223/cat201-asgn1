@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +8,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -57,7 +53,7 @@ public class HomePageSceneController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
         Node bookCard = fxmlLoader.load();
         BookCardController controller = fxmlLoader.getController();
-        controller.setBookDetails(book.getTitle(), book.getAuthor(), book.getISBN());
+        controller.setBookDetails(book.getTitle(), book.getAuthor(), book.getISBN(), book.getAvailability());
         controller.setLibrary(library);
         bookFlowPane.getChildren().add(bookCard);
       }
