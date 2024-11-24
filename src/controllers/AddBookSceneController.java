@@ -141,22 +141,30 @@ public class AddBookSceneController {
 
         if (action.isPresent() && action.get() == ButtonType.OK) {
             // User chose OK, proceed with adding book
-            library.addBook(title, author, ISBN);
-            Alert infoAlert = new Alert(AlertType.INFORMATION);
-            infoAlert.setTitle("Success");
-            infoAlert.setHeaderText(null);
-
-            String ext = lFile.getName().split("\\.")[1];
-            String dest = "src/data/thumbnail/" + ISBN + "." + ext;
-            File destFile = new File(dest);
-            try {
-                Files.copy(lFile.toPath(), destFile.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
+            int result = library.addBook(title, author, ISBN);
+            if (result == 1) {
+                Alert infoAlert = new Alert(AlertType.INFORMATION);
+                infoAlert.setTitle("Success");
+                infoAlert.setHeaderText(null);
+    
+                String ext = lFile.getName().split("\\.")[1];
+                String dest = "src/data/thumbnail/" + ISBN + "." + ext;
+                File destFile = new File(dest);
+                try {
+                    Files.copy(lFile.toPath(), destFile.toPath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    
+                infoAlert.setContentText("Book added successfully");
+                infoAlert.showAndWait();
+            } else {
+                Alert errorAlert = new Alert(AlertType.ERROR);
+                errorAlert.setTitle("Error");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("Book already exists");
+                errorAlert.showAndWait();
             }
-
-            infoAlert.setContentText("Book added successfully");
-            infoAlert.showAndWait();
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomePageScene.fxml"));

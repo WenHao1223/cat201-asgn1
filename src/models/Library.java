@@ -20,14 +20,14 @@ public class Library extends Book implements LibraryInterface {
     System.out.println("-----------------\n");
   }
 
-  public void addBook(String title, String author, String ISBN) {
+  public int addBook(String title, String author, String ISBN) {
     System.out.println("Adding book...");
 
     for (Book book : books) {
       if (book.ISBN.equals(ISBN)) {
         System.out.println("Book already exists.");
         System.out.println("-----------------\n");
-        return;
+        return 0;
       }
     }
 
@@ -36,6 +36,8 @@ public class Library extends Book implements LibraryInterface {
     books.add(book);
     System.out.println("Book added: " + title);
     System.out.println("-----------------\n");
+
+    return 1;
   }
 
   public void viewBooks() {
