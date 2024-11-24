@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.Library;
 
+import java.io.File;
 import java.io.IOException;
 
 public class BookCardController {
@@ -78,8 +79,21 @@ public class BookCardController {
     setImage(isbn);
   }
 
+  private String getImagePath(String isbn) {
+    String[] extensions = { ".jpg", ".png", ".gif" };
+    for (String ext : extensions) {
+      String imagePath = "/data/thumbnail/" + isbn + ext;
+      if (getClass().getResource(imagePath) != null) {
+        return imagePath;
+      }
+    }
+    // Return a default image path if none of the files exist
+    return "/data/thumbnail/default.jpg";
+  }
+
   private void setImage(String isbn) {
-    String imagePath = "/data/thumbnail/" + isbn + ".jpg";
+    String imagePath = getImagePath(isbn);
+    System.out.println("Image path: " + imagePath);
     Image image;
     try {
       if (getClass().getResource(imagePath) != null) {
