@@ -13,9 +13,7 @@ import javafx.scene.image.Image;
 import models.Book;
 import models.Library;
 
-import controllers.AddBookSceneController;
 import controllers.HomePageSceneController;
-import controllers.ViewBookSceneController;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -36,61 +34,13 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         System.out.println("Program is running...");
-
-        int page = 1;
-        /*
-         * 1 - HomePageScene
-         * 2 - AddBookScene
-         * 3 - ViewBookScene
-         * 4 - BookCard
-         * 5 - BorrowDialogBox
-         * 6 - BorrowerDetailsBox
-         */
         try {
-
             Parent root;
             FXMLLoader fxmlLoader;
-            switch (page) {
-                case 1:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomePageScene.fxml"));
-                    root = fxmlLoader.load();
-                    HomePageSceneController homeController = fxmlLoader.getController();
-                    homeController.setLibrary(library);
-                    break;
-                case 2:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/AddBookScene.fxml"));
-                    root = fxmlLoader.load();
-                    AddBookSceneController addBookController = fxmlLoader.getController();
-                    addBookController.setLibrary(library);
-                    break;
-                case 3:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/views/ViewBookScene.fxml"));
-                    root = fxmlLoader.load();
-                    ViewBookSceneController viewBookController = fxmlLoader.getController();
-                    viewBookController.setLibrary(library);
-                    break;
-                case 4:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BookCard.fxml"));
-                    root = fxmlLoader.load();
-                    ViewBookSceneController bookController = fxmlLoader.getController();
-                    bookController.setLibrary(library);
-                    break;
-                case 5:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowDialogBox.fxml"));
-                    root = fxmlLoader.load();
-                    ViewBookSceneController borrowController = fxmlLoader.getController();
-                    borrowController.setLibrary(library);
-                    break;
-                case 6:
-                    fxmlLoader = new FXMLLoader(getClass().getResource("/components/BorrowerDetailsBox.fxml"));
-                    root = fxmlLoader.load();
-                    ViewBookSceneController borrowerController = fxmlLoader.getController();
-                    borrowerController.setLibrary(library);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid page number: " + page);
-            }
-            System.out.println("Loaded scene for page: " + page);
+            fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomePageScene.fxml"));
+            root = fxmlLoader.load();
+            HomePageSceneController homeController = fxmlLoader.getController();
+            homeController.setLibrary(library);
             Scene scene = new Scene(root);
 
             // primaryStage.setTitle("TLT Library");
@@ -107,29 +57,7 @@ public class App extends Application {
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            switch (page) {
-                case 1:
-                    System.err.println("Failed to load HomePageScene.fxml");
-                    break;
-                case 2:
-                    System.err.println("Failed to load AddBookScene.fxml");
-                    break;
-                case 3:
-                    System.err.println("Failed to load ViewBookScene.fxml");
-                    break;
-                case 4:
-                    System.err.println("Failed to load BookCard.fxml");
-                    break;
-                case 5:
-                    System.err.println("Failed to load BorrowDialogBox.fxml");
-                    break;
-                case 6:
-                    System.err.println("Failed to load BorrowerDetailsBox.fxml");
-                    break;
-                default:
-                    System.err.println("Failed to load scene for page: " + page);
-                    break;
-            }
+            System.err.println("Failed to load screen");
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
