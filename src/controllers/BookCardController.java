@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.Library;
 
-import java.io.File;
 import java.io.IOException;
 
 public class BookCardController {
