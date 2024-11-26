@@ -26,7 +26,8 @@
          <children>
             <AnchorPane>
                <TextField fx:id="tfSearch" maxHeight="1.7976931348623157E308" prefHeight="40.0"
-                  prefWidth="300.0" promptText="Search ..." styleClass="text-field" />
+                  prefWidth="300.0" promptText="Search ..." styleClass="text-field"
+                  onAction="#handleSearchBookButtonAction" />
                <Button contentDisplay="GRAPHIC_ONLY" maxWidth="30.0" mnemonicParsing="false"
                   text="Close" styleClass="red-text" onAction="#handleSearchCloseButtonAction"
                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
