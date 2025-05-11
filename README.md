@@ -11,6 +11,9 @@ A GUI-based Library Management System developed using **JavaFX** for user intera
 - Book cover thumbnails stored based on ISBN  
 - Clean and user-friendly GUI built with **Scene Builder** and JavaFX
 
+## 📸 Screenshots
+![TLT Library Screenshot](src/images/screenshot.png)
+
 ## 🛠 Technologies & Tools
 
 - Java 17  
